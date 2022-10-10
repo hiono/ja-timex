@@ -121,6 +121,10 @@ class TIMEX:
             if self.parsed.get("half_suffix"):
                 minute = 30
 
+            # "午後"という表記がある場合
+            if self.parsed.get("pm_prefix"):
+                hour = hour + 12
+
             return pendulum.datetime(
                 year=self.reference.year,
                 month=self.reference.month,
